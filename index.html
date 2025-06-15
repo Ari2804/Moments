@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Unwrap It! </title>
+</head>
+
+<body id="body-div">
+      <div class="romantic-container" id="romantic-container">
+        <div class="romantic-text">
+          <span class="title"> Dearest Ved, </span> 
+          <br />
+          <span class="content"> you have a message waiting for youuu </span>
+          <br />
+        </div>
+    
+        <div class="env-section" id="env-section">
+          <div class="envelope-lid-opened" id="envelope-id-opened">
+        </div>
+        <div class="envelope">
+          <div class="envelope-lid-closed" id="envelope-id-closed">
+          </div>
+          <div class="envelope-body" id="envelope-body">
+          </div>
+    
+          </div>
+        </div>
+    
+        <div class="envelope-message" id="envelope-message">
+            <p id="title-content"> Dearest Ved, </p>
+            <p id="message-content"> The heart knows when it's found someone special - and you know what, my damn heart can't stop pounding when I look at you, thinking how lucky it is to have found someone as amazing and cute and caring as you :) And before I lose my senses thinking about you, let's ask the cutie reading this right now - would you give me the honour of taking you out on a date this week? ❤️✨  </p>
+
+            <div id="buttons">
+                <button class="button-style" type="button" id="button-yes"> Yes </button>
+                <button class="button-style" type="button" id="button-no"> No </button>
+            </div>
+    
+       </div>
+      </div>
+      
+      <script type="text/javascript">
+        // Initializing emailJS service
+        (function() {
+            emailjs.init({
+                publicKey: 'UrB66jqGnHp9MqJAy',
+            }); 
+        })();
+
+        const lidClosed = document.getElementById('envelope-id-closed');
+        const lidOpen = document.getElementById('envelope-id-opened');
+        const cont = document.getElementById('env-section');
+        const enve = document.getElementById('envelope-message');
+        const bodyColor = document.getElementById('body-div');
+        const buttonYes = document.getElementById('button-yes');
+        const buttonNo = document.getElementById('button-no');
+        const content = document.getElementById('message-content');
+        const letterId = document.getElementById('envelope-message');
+    
+        lidClosed.addEventListener('click', () => {
+          lidOpen.classList.toggle('addVisibility');
+          cont.classList.toggle('addVisibility');
+          enve.classList.toggle('addVisibilityMessage');
+          letterId.classList.toggle('letterBodyLength');
+          bodyColor.classList.toggle('backgroundChange');
+        });
+
+        function changeContentDiv() {
+            content.classList.add('contentChange');
+
+            setTimeout(() => {
+                content.innerHTML = "Yayyyy!!! He said yessss! See you soon then ✨✨ !";
+                content.classList.remove('contentChange');
+            }, 500);
+            
+        }
+
+        function buttonSpam() {
+            
+        }
+
+        buttonYes.addEventListener('click', () => {
+            const buttons = document.getElementById('buttons');
+            const titleContent = document.getElementById('title-content');
+            changeContentDiv();
+            titleContent.style.display = 'none';
+            buttons.style.display = 'none';
+            
+            const message = {
+                button: "YES",
+                time: new Date().toLocaleString(),
+            }
+
+            emailjs.send('service_sx1rkos', 'template_y1jpfo9', message)
+                .then(function(response) {
+                console.log('Email sent successfully!', response.status, response.text);
+            }, function(error) {
+                console.error('Failed to send email.', error);
+            });
+            
+        });
+
+        buttonNo.addEventListener('click', () => {
+            const message = {
+                button: "NO",
+                time: new Date().toLocaleString(),
+            }
+
+            emailjs.send('service_sx1rkos', 'template_y1jpfo9', message)
+                .then(function(response) {
+                console.log('Email sent successfully!', response.status, response.text);
+            }, function(error) {
+                console.error('Failed to send email.', error);
+            });
+
+            buttonSpam();
+        });
+
+      </script>
+    
+</body>
+</html>

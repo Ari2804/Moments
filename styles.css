@@ -1,0 +1,237 @@
+@import url(https://fonts.googleapis.com/css2?family=Love+Light&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap);
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #f8838e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.romantic-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.romantic-container > .romantic-text {
+  text-align: center;
+  font-family:  'Love Light', cursive;
+  font-size: 45px;
+  animation-delay: 0s;
+  margin: 5% 3%;
+}
+
+.romantic-container > .romantic-text > .title {
+  text-align: center;
+  font-family:  'Love Light', cursive;
+  font-size: 45px;
+  animation-delay: 0s;
+}
+
+.romantic-container > .romantic-text > .content {
+  text-align: center;
+  font-family:  'CedarVille Cursive', cursive;
+  font-size: 30px;
+  animation-delay: 1s;
+  letter-spacing: -0.12em;
+  opacity: 0;
+  animation: fadeSideways 2s ease forwards;
+}
+
+@keyframes fadeSideways {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.romantic-container > .env-section > .envelope {
+  color: red;
+  display: flex:
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  background-color: #e7c9a9;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: pulseShadow 2s infinite ease-in-out;
+  animation-delay: 0s;
+}
+
+@keyframes pulseShadow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(76, 175, 80, 0.9);
+        transform: scale(1.075);
+  }
+}
+
+#envelope-id-opened {
+  width: 0;
+  height: 0;
+  border-bottom: 80px solid white;
+  border-right: 95px solid transparent;
+  border-left: 95px solid transparent;
+  text-decoration: none;
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.9s ease;
+}
+
+#envelope-id-opened.addVisibility {
+  width: 0;
+  height: 0;
+  border-bottom: 80px solid white;
+  border-right: 95px solid transparent;
+  border-left: 95px solid transparent;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.romantic-container > .env-section > .envelope > .envelope-lid-closed {
+  width: 0;
+  height: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  background-color: white;
+  clip-path: polygon(0 0, 50% 100%, 100% 0); 
+  transition: transform 0.5s ease;
+  transform-origin: top center;
+  z-index: 2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.romantic-container > .env-section > .envelope:hover {
+  transition: box-shadow 0.3s ease;
+  box-shadow: 6px 12px 16px rgba(0, 0, 0, 0.4);
+}
+
+.romantic-container > .env-section >  .envelope > .envelope-body {
+  text-align: center;
+  height: 20vh;
+}
+
+#envelope-message.letterBodyLength {
+    text-align: center;
+    height: 100%;
+  }
+  
+
+#romantic-container.addVisibility {
+  transform: scale(1.10);
+}
+
+.romantic-container > #envelope-message {
+  color: black; 
+  font-family:  'Love Light', cursive;
+  font-size: 20px;
+  display: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: width 1s ease, height 1s ease, opacity 1s ease;
+  border-radius: 15px;
+  padding: 2% 10%;
+}
+
+.romantic-container > #envelope-message.addVisibilityMessage {
+  color: black; 
+  font-family:  'Cedarville Cursive', cursive;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  opacity: 1;
+  background-color: white;
+  box-shadow: 6px 12px 16px rgba(0, 0, 0, 0.2);
+  transition: opacity 3s ease-in-out;
+  animation: pulseShadowMessage 2s infinite ease-in-out;
+}
+
+@keyframes pulseShadowMessage {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(214, 101, 116, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+#env-section.addVisibility {
+  display: none;
+}
+
+@keyframes backgroundChange {
+    0% {
+        background-color: #f8838e;
+    }
+    100% {
+        background-color: #a3364b;
+    }
+}
+
+#body-div.backgroundChange {
+    animation: backgroundChange 2.5s ease forwards;
+}
+
+#message-content {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+#message-content.contentChange {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+}
+
+.button-style {
+    font-family: 'Cedarville Cursive', cursive;
+    background-color: #a3364b;
+    color: white;
+    border: none;
+    width: 60px;
+    padding: 4px 5px;
+    border-radius: 4px;
+    margin: 5px;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.button-style:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
