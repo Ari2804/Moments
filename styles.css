@@ -18,7 +18,9 @@ body {
 .romantic-container {
   display: flex;
   justify-content: center;
-  width: 50%;
+  height: auto;
+  overflow: visible;
+  width: 60%;
   flex-direction: column;
   opacity: 0;
   transform: translateY(20px);
@@ -68,16 +70,23 @@ body {
   }
 }
 
+.romantic-container > .env-section  {
+    height: auto;
+    overflow: visible;
+  }
+
 .romantic-container > .env-section > .envelope {
   color: red;
   display: flex:
   position: relative;
   flex-direction: column;
+  height: auto;
   width: 100%;
   background-color: #e7c9a9;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   animation: pulseShadow 2s infinite ease-in-out;
   animation-delay: 0s;
+  overflow: visible;
 }
 
 @keyframes pulseShadow {
@@ -87,7 +96,7 @@ body {
   }
   50% {
     box-shadow: 0 0 40px rgba(76, 175, 80, 0.9);
-        transform: scale(1.075);
+    transform: scale(1.075);
   }
 }
 
@@ -138,7 +147,7 @@ body {
 
 .romantic-container > .env-section >  .envelope > .envelope-body {
   text-align: center;
-  height: 20vh;
+  height: 200px;
 }
 
 #envelope-message.letterBodyLength {
@@ -155,16 +164,18 @@ body {
   color: black; 
   font-family:  'Love Light', cursive;
   font-size: 20px;
-  display: none;
+  display: block;
+  max-height: 0;
   width: 100%;
-  height: 100%;
   opacity: 0;
   transition: width 1s ease, height 1s ease, opacity 1s ease;
   border-radius: 15px;
-  padding: 2% 10%;
+  padding: 2% 8%;
+  overflow: hidden;
 }
 
 .romantic-container > #envelope-message.addVisibilityMessage {
+  position: relative;
   color: black; 
   font-family:  'Cedarville Cursive', cursive;
   font-size: 20px;
@@ -172,10 +183,10 @@ body {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  max-height: 1000px;
   opacity: 1;
   background-color: white;
   box-shadow: 6px 12px 16px rgba(0, 0, 0, 0.2);
-  transition: opacity 3s ease-in-out;
   animation: pulseShadowMessage 2s infinite ease-in-out;
 }
 
@@ -234,4 +245,11 @@ body {
 
 .button-style:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#body-div {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
