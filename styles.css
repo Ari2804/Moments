@@ -20,7 +20,7 @@ body {
   justify-content: center;
   height: auto;
   overflow: visible;
-  width: 60%;
+  width: 70%;
   flex-direction: column;
   opacity: 0;
   transform: translateY(20px);
